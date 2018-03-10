@@ -12,6 +12,7 @@
     module.exports={
 
     entry:{
+         vendor:['jquery','./src/js/common.js'],//合并js
          ####//入口文件
         index:'./src/js/index.js',
         ####//入口文件
@@ -76,16 +77,46 @@
         
         chunks:['index']由于多个js要引入某个js chunk
         
-    }),new htmlWebpackPlugin({
+    }),
+    
+    //压缩js
+    
+     new webpack.optimize.UglifyJsPlugin({
+     
+        compress:{
+        
+            warnings:true
+            
+        }
+        
+    }),
+    new htmlWebpackPlugin({
     
         filename: 'cart.html',
         
         template: './src/cart.html',
         
         chunks:['cart']
+        //压缩html
+        minify:{
+        
+            removeComments:true,
+            
+            collapseWhitespace:true
+            
+        }
         
     }),
-    
+    //提取公共内容
+     new webpack.optimize.CommonsChunkPlugin({
+     
+        name:'vendor',
+        
+        chunks:['index','cart','vendor'],
+        
+        minChunks:3
+        
+    }),
     new webpack.ProvidePlugin({引入第三方插件
     
         $:"jquery",
