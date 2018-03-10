@@ -13,35 +13,35 @@
 
     entry:{
     
-        index:'./src/js/index.js',
+        index:'./src/js/index.js',//入口文件
         
-        cart: './src/js/cart.js' 
-        
-    },
+        cart: './src/js/cart.js' //入口文件
+        
+    },
     
     output:{
     
-       path:path.join(__dirname,'./dist'),
-       
-       filename: 'js/[name].js',
-       
-       publicPath:'' 
-       
+       path:path.join(__dirname,'./dist'),//输出文件地址
+       
+       filename: 'js/[name].js',//输出文件
+       
+       publicPath:'' //前缀比如加cdn地址
+       
     },
     
     module:{
     
         rules:[{
         
-            test: /\.css$/,
-            
-            include:path.join(__dirname,'src'),
-            
-            exclude:'/node_modules/',
-            
-            use: ExtractTextPlugin.extract({
-            
-              fallback: "style-loader",
+            test: /\.css$/,//匹配对象
+            
+            include:path.join(__dirname,'src'),//编译区域
+            
+            exclude:'/node_modules/',//不编译区域
+           
+            use: ExtractTextPlugin.extract({//解析css-loader
+            
+              fallback: "style-loader",
               
               use: "css-loader"
               
@@ -53,10 +53,10 @@
     
     plugins: [
     
-        new ExtractTextPlugin("index.css"),
-        
-        new CleanWebpackPlugin([
-        
+        new ExtractTextPlugin("index.css"),//抽取文本
+        
+        new CleanWebpackPlugin([//清除文件插件
+           
             './dist',
             
           ], {
@@ -68,17 +68,17 @@
             
         })
         
-        ,new htmlWebpackPlugin({
-        
-        filename: 'index.html',
+        ,new htmlWebpackPlugin({//生成html
+        
+        filename: 'index.html',
         
         template: './src/index.html',
         
-        chunks:['index']
-        
-    }),new htmlWebpackPlugin({
-    
-        filename: 'cart.html',
+        chunks:['index']//由于多个js要引入某个js chunk
+        
+    }),new htmlWebpackPlugin({//
+    
+        filename: 'cart.html',
         
         template: './src/cart.html',
         
@@ -86,9 +86,9 @@
         
     }),
     
-    new webpack.ProvidePlugin({
-    
-        $:"jquery",
+    new webpack.ProvidePlugin({//引入第三方插件
+    
+        $:"jquery",
         
         jquery:'jquery',
         
@@ -96,6 +96,6 @@
         
     })
     
-   ]
+    ]
    
-}
+  }
