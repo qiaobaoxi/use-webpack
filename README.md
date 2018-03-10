@@ -1,13 +1,13 @@
 # use-webpack
-  let path = require('path');
+  let path = require('path')
 
-  let htmlWebpackPlugin = require('html-webpack-plugin');
+  let htmlWebpackPlugin = require('html-webpack-plugin')
 
-  let webpack = require('webpack');
+  let webpack = require('webpack')
 
-  let CleanWebpackPlugin = require('clean-webpack-plugin');
+  let CleanWebpackPlugin = require('clean-webpack-plugin')
 
-  const ExtractTextPlugin = require("extract-text-webpack-plugin");
+  const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
   module.exports={
 
