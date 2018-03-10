@@ -12,10 +12,10 @@
     module.exports={
 
     entry:{
-         入口文件
+         ####//入口文件
         index:'./src/js/index.js',
-        
-        cart: './src/js/cart.js' 入口文件
+        ####//入口文件
+        cart: './src/js/cart.js' 
         
     },
     
